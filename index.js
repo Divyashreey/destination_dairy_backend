@@ -15,12 +15,12 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 mongoose.connect(process.env.MONGO_URI)
 .then(console.log("Connected to MongoDB"))
 .catch((err)=>console.log(err));
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Replace '*' with the specific origin of your React app
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-//   });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://destination-dairy-frontend.onrender.com'); // Replace '*' with the specific origin of your React app
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+  });
   
 const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
