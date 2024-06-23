@@ -16,7 +16,9 @@ mongoose.connect(process.env.MONGO_URI)
 .then(console.log("Connected to MongoDB"))
 .catch((err)=>console.log(err));
 app.use(cors({
-    origin: 'https://destination-dairy-frontend.onrender.com'
+    origin: 'https://destination-dairy-frontend.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
   }));
 // app.use((req, res, next) => {
 //     res.header('Access-Control-Allow-Origin', 'https://destination-dairy-frontend.onrender.com'); // Replace '*' with the specific origin of your React app
